@@ -34,7 +34,7 @@ PratStrike is designed as a **systems-first game project**, emphasizing:
 | Fire | Left Mouse / `Space` |
 | Dash | `Left Shift` |
 | Restart after death | `R` |
-| Quit | `Esc` |
+| Quit | `Esc + q` |
 
 ---
 
