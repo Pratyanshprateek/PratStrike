@@ -1,38 +1,105 @@
-# PratStrike
+# 🎮 PratStrike — 2D Action Shooter (C++ / SDL2)
 
-A 2D top-down action shooter built in C++ and SDL2, focused on game feel.
+![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
+![SDL2](https://img.shields.io/badge/Engine-SDL2-green)
+![Build](https://img.shields.io/badge/Build-CMake-orange)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Focus](https://img.shields.io/badge/Focus-Game%20Systems%20%26%20Feel-purple)
 
-[GIF]
+A **2D top-down action shooter** built in **C++ using SDL2**, focused heavily on **game feel, responsiveness, and systems design**.
 
-## How to build
+---
 
-### macOS
-`cmake -B build`
+---
 
-`cmake --build build`
+## 🚀 Overview
 
-### Windows
-`cmake -B build`
+PratStrike is designed as a **systems-first game project**, emphasizing:
 
-`cmake --build build --config Release`
+- Tight, responsive controls  
+- Deterministic simulation  
+- Modular architecture (ECS)  
+- Strong moment-to-moment game feel  
 
-### Linux
-`cmake -B build`
+---
 
-`cmake --build build`
-
-## Controls
+## 🎮 Controls
 
 | Action | Input |
-| --- | --- |
-| Rotate left | `A` / Left Arrow |
-| Rotate right | `D` / Right Arrow |
-| Accelerate | `W` / Up Arrow |
-| Brake / reverse thrust | `S` / Down Arrow |
+|---|---|
+| Rotate left | `A` / ← |
+| Rotate right | `D` / → |
+| Move forward | `W` / ↑ |
+| Reverse thrust | `S` / ↓ |
 | Fire | Left Mouse / `Space` |
-| Dash | Left Shift |
+| Dash | `Left Shift` |
 | Restart after death | `R` |
 | Quit | `Esc` |
+
+---
+
+## ⚙️ Technical Features
+
+- 🧩 Custom **ECS (Entity Component System)** with sparse-set storage  
+- ⏱️ Fixed-timestep physics loop + render interpolation  
+- 📦 **Quadtree-accelerated AABB collision detection**  
+- 💥 Hitstop system (40–100ms based on impact weight)  
+- 📳 Screenshake with intensity + decay  
+- 🎯 Smooth 60 FPS rendering via interpolation  
+- 🔊 Spatial audio panning (`SDL2_mixer`)  
+- 👾 Multi-phase boss AI with state machine  
+- 🚀 Object pool allocator for bullet entities  
+- 🛡️ Per-hit invincibility frames (i-frames) with flicker rendering  
+
+---
+
+## 🧠 Design Decisions
+
+### ECS Architecture
+PratStrike uses a **data-oriented ECS** instead of inheritance-heavy design.  
+This allows flexible composition of entities like enemies, bullets, particles, and boss states while maintaining **cache-friendly iteration** for performance-critical systems.
+
+---
+
+### Deterministic Simulation
+A **fixed timestep loop** ensures:
+- Consistent gameplay across machines  
+- Stable physics and timing  
+- Reliable tuning of mechanics like dash, fire rate, and collisions  
+
+---
+
+### Game Feel Systems
+Game feel is treated as a **first-class system**:
+
+- Hitstop implemented as a global state  
+- Screenshake, particles, and audio decoupled from core logic  
+- Visual + physical feedback tightly synchronized  
+
+---
+
+## 🏗️ Build Instructions
+
+### macOS / Linux
+```bash
+cmake -B build
+cmake --build build
+```
+
+### Windows
+```
+cmake -B build
+cmake --build build --config Release
+```
+
+### Project Structure
+```
+PratStrike/
+├── src/
+├── assets/
+├── CMakeLists.txt
+└── README.md
+```
 
 ## Technical features
 
@@ -57,12 +124,31 @@ Hitstop is implemented as explicit world state rather than as an ad hoc pause fl
 
 I also chose to keep game feel utilities as standalone helpers instead of baking them into a monolithic manager. Screenshake, particles, tint flashes, and spatial audio can be triggered from collisions, boss transitions, or deaths without introducing heavy coupling between systems.
 
-## What I would add next
+## 🔮 Future Improvements
 
-- A lightweight level editor for encounter authoring and wave pacing iteration
-- GPU-driven particles and trails for denser combat feedback
-- Deterministic rollback-friendly networking for co-op or versus experiments
+- 🛠️ Lightweight level editor for encounter design  
+- ✨ GPU-driven particles & trails  
+- 🌐 Deterministic rollback networking (co-op / PvP)  
 
-## License
+---
 
-MIT
+## 💡 Highlights
+
+- Built from scratch in **modern C++**  
+- Focus on **systems design + performance**  
+- Strong emphasis on **game feel mechanics**  
+- Clean, modular architecture (ECS)  
+
+---
+
+## 👨‍💻 Author
+
+**Pratyansh Prateek**  
+🎓 B.Tech CSE | Game Systems | ML Engineer  
+
+🔗 LinkedIn: https://www.linkedin.com/in/pratyansh-prateek/  
+💻 GitHub: https://github.com/Pratyanshprateek  
+
+---
+
+⭐ If you like this project, consider giving it a star on GitHub!
